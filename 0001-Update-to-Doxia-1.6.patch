@@ -1,0 +1,42 @@
+From 482abdc1f3887cc9a0f71888fc30bd50547b527a Mon Sep 17 00:00:00 2001
+From: Mikolaj Izdebski <mizdebsk@redhat.com>
+Date: Mon, 4 Aug 2014 10:31:15 +0200
+Subject: [PATCH] Update to Doxia 1.6
+
+---
+ pom.xml                                                           | 2 +-
+ src/main/java/org/apache/maven/reporting/AbstractMavenReport.java | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pom.xml b/pom.xml
+index ba0fb78..b880637 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -58,7 +58,7 @@
+ 
+   <properties>
+     <mavenVersion>2.2.1</mavenVersion>
+-    <doxiaVersion>1.2</doxiaVersion>
++    <doxiaVersion>1.6</doxiaVersion>
+   </properties>
+ 
+   <dependencies>
+diff --git a/src/main/java/org/apache/maven/reporting/AbstractMavenReport.java b/src/main/java/org/apache/maven/reporting/AbstractMavenReport.java
+index ba44b38..ae6b921 100644
+--- a/src/main/java/org/apache/maven/reporting/AbstractMavenReport.java
++++ b/src/main/java/org/apache/maven/reporting/AbstractMavenReport.java
+@@ -21,10 +21,10 @@ package org.apache.maven.reporting;
+ 
+ import org.apache.maven.doxia.sink.Sink;
+ import org.apache.maven.doxia.sink.SinkFactory;
+-import org.apache.maven.doxia.sink.render.RenderingContext;
+ import org.apache.maven.doxia.site.decoration.DecorationModel;
+ import org.apache.maven.doxia.siterenderer.Renderer;
+ import org.apache.maven.doxia.siterenderer.RendererException;
++import org.apache.maven.doxia.siterenderer.RenderingContext;
+ import org.apache.maven.doxia.siterenderer.SiteRenderingContext;
+ import org.apache.maven.doxia.siterenderer.sink.SiteRendererSink;
+ import org.apache.maven.plugin.AbstractMojo;
+-- 
+1.9.3
+
