@@ -1,16 +1,17 @@
 %{?_javapackages_macros:%_javapackages_macros}
 Name:           maven-reporting-impl
-Version:        2.2
-Release:        7.1%{?dist}
+Version:        2.3
+Release:        1.1
 Summary:        Abstract classes to manage report generation
+Group:		Development/Java
 License:        ASL 2.0
-URL:            http://maven.apache.org/shared/maven-reporting-impl
-# svn export http://svn.apache.org/repos/asf/maven/shared/tags/maven-reporting-impl-2.2 maven-reporting-impl-2.2
-# tar caf maven-reporting-impl-2.2.tar.xz maven-reporting-impl-2.2/
-Source0:        %{name}-%{version}.tar.xz
-# ASL mandates that the licence file be included in redistributed source
-Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
+URL:            http://maven.apache.org/shared/%{name}
 BuildArch:      noarch
+
+Source0:        http://repo1.maven.org/maven2/org/apache/maven/reporting/%{name}/%{version}/%{name}-%{version}-source-release.zip
+
+# Forwarded upstream: http://jira.codehaus.org/browse/MSHARED-344
+Patch0:         0001-Update-to-Doxia-1.6.patch
 
 BuildRequires:  maven-local
 BuildRequires:  mvn(commons-validator:commons-validator)
@@ -19,7 +20,7 @@ BuildRequires:  mvn(org.apache.maven.doxia:doxia-core)
 BuildRequires:  mvn(org.apache.maven.doxia:doxia-sink-api)
 BuildRequires:  mvn(org.apache.maven.doxia:doxia-site-renderer)
 BuildRequires:  mvn(org.apache.maven.reporting:maven-reporting-api)
-BuildRequires:  mvn(org.apache.maven.shared:maven-shared-components)
+BuildRequires:  mvn(org.apache.maven.shared:maven-shared-components:pom:)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
 BuildRequires:  mvn(org.apache.maven:maven-project)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
@@ -44,7 +45,7 @@ API documentation for %{name}.
 
 %prep
 %setup -q
-cp -p %{SOURCE1} LICENSE.txt
+%patch0 -p1
 
 %build
 %mvn_build %{!?fedora:-f}
@@ -53,12 +54,29 @@ cp -p %{SOURCE1} LICENSE.txt
 %mvn_install
 
 %files -f .mfiles
-%doc LICENSE.txt
+%dir %{_javadir}/%{name}
+%doc LICENSE NOTICE
 
 %files javadoc -f .mfiles-javadoc
-%doc LICENSE.txt
+%doc LICENSE NOTICE
 
 %changelog
+* Tue Sep 16 2014 Mikolaj Izdebski <mizdebsk@redhat.com> - 2.3-1
+- Update to upstream version 2.3
+
+* Mon Aug  4 2014 Mikolaj Izdebski <mizdebsk@redhat.com> - 2.2-11
+- Fix build-requires on parent POM
+- Port to Doxia 1.6
+
+* Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.2-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
+
+* Tue Mar 04 2014 Stanislav Ochotnicky <sochotnicky@redhat.com> - 2.2-9
+- Use Requires: java-headless rebuild (#1067528)
+
+* Wed Feb 19 2014 Mikolaj Izdebski <mizdebsk@redhat.com> - 2.2-8
+- Fix unowned directory
+
 * Sat Aug 03 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.2-7
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
 
