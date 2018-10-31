@@ -1,7 +1,7 @@
 %{?_javapackages_macros:%_javapackages_macros}
 Name:           maven-reporting-impl
 Version:        2.3
-Release:        1.2
+Release:        1.3
 Summary:        Abstract classes to manage report generation
 Group:		Development/Java
 License:        ASL 2.0
