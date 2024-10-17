@@ -5,7 +5,7 @@ Release:        1.3
 Summary:        Abstract classes to manage report generation
 Group:		Development/Java
 License:        ASL 2.0
-URL:            http://maven.apache.org/shared/%{name}
+URL:            https://maven.apache.org/shared/%{name}
 BuildArch:      noarch
 
 Source0:        http://repo1.maven.org/maven2/org/apache/maven/reporting/%{name}/%{version}/%{name}-%{version}-source-release.zip
